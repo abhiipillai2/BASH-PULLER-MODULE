@@ -61,8 +61,8 @@ echo $string
 echo $string > req.json
 b=0
 #JSON HTTP GET CALL
-#response=`curl -H "Content-Type: application/json" -d @req.json http://172.16.188.121:15080/MO_ROUTER/JSON_SendEmailNotification`
-response=`curl -u OoredooUser:NGWP@Ooredoo#123 -i -H "Content-Type: application/json Accept:application/json" -d @req.json http://172.16.188.121:15080/MO_ROUTER/JSON_SendEmailNotification`
+#response=`curl -H "Content-Type: application/json" -d @req.json http://ip:port/end/url`
+response=`curl -u username:pswd -i -H "Content-Type: application/json Accept:application/json" -d @req.json http://ip:port/end/url`
 
 #creating res file
 echo $response > res.json
@@ -71,7 +71,7 @@ grep_val=`grep 'successfully' res.json`
 
 if [ ${#grep_val} != null ]
 then
-        sqlplus -s UAT_NGW/ooredoo217@NGWDEV <<EOF
+        sqlplus -s UAT_NGW/pswd@NGWDEV <<EOF
 
                         set feedback off
                         set pagesize 0
